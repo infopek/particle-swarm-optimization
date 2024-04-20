@@ -13,6 +13,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+
 # Update submodules
 include(cmake/update_submodules.cmake)
 
@@ -31,6 +32,10 @@ find_package(SFML COMPONENTS
     window 
     graphics 
   CONFIG REQUIRED)
+
+# Add dependencies here via find_package
+# Note: Has to be before macro definition, and only use find_package for external dependencies here!
+find_package(fmt CONFIG REQUIRED)
 
 # Override default find_package with macro
 macro(find_package)
